@@ -1,6 +1,8 @@
 #include <iostream>
 #include <iomanip>
 #include <random>
+#include <algorithm>
+#include <vector>
 
 using std::cout;
 using std::cin;
@@ -52,6 +54,7 @@ void gen_map(int N, int ** map, int ** city_a, int ** city_b){
 }
 
 void add_roads(int N, int n_roads, int **map){
+    std::vector<int> nrc;
     int total_roads = 0 ;
     for(int r=0; r<2*N; ++r){
         for(int c=0; c<2*N; ++c){
@@ -59,9 +62,16 @@ void add_roads(int N, int n_roads, int **map){
                 map[r][c] = map[c][r];
             }
             if(r < N && c >= N) {
-                if(total_roads != n_roads){
-                    map[r][c] = (rand() % 9 ) +1;
-                    ++total_roads;
+                if(total_roads != n_roads ){
+                    if(std::find(nrc.begin(), nrc.end(), r) == nrc.end() &&
+                        std::find(nrc.begin(), nrc.end(), c) == nrc.end()){
+
+                        map[r][c] = (rand() % 9 ) +1;
+                        nrc.push_back(r);
+                        nrc.push_back(c);
+                        ++total_roads;
+
+                    }
                 }
                 
             }
