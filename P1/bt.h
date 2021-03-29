@@ -25,14 +25,14 @@ class binary_tree{
 		bt_node * root;
 
 		void _insert(int x, bt_node * root){
-            // empty root
+            // empty root 
 			if(root == nullptr){
 				this->root = new bt_node(x);
 			}
 
             // insert to the left if 
             // value is less than root
-            if(x < root->data){
+            if(x < root->value()){
                 if(root->left == nullptr){
                     root->left = new bt_node(x); // left of root is empty, can insert
                     return;
@@ -42,7 +42,7 @@ class binary_tree{
             }
             // insert to the right if 
             // value is greater than root
-            if(x > root->data){
+            if(x > root->value()){
                 if(root->right == nullptr){
                     root->right = new bt_node(x); // right of root is empty, can insert
                     return;
@@ -52,11 +52,12 @@ class binary_tree{
             }
 		}  
 
-        void _print(bt_node * root){
+        void _print( bt_node * root){
             if(root == nullptr) return;
 
+
+            cout  << root->value() << " ";
             _print(root->left);
-            cout << root->value() << " ";
             _print(root->right);
         }
         
@@ -80,6 +81,7 @@ class binary_tree{
             }
 
             return nullptr;
+
         }
 
 	public:
@@ -99,14 +101,11 @@ class binary_tree{
 
         bt_node * search(int x){
             return this->_search(x, this->root);
-        }
-
-        
+        } // wrapper search
 
         void print(){
-            this->_print(this->root);
-            cout << endl;
-        }
+            this->_print( this->root);
+        } // wrappper print
 
 
 };
