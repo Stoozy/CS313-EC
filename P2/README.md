@@ -57,6 +57,14 @@ This leaves the top right quadrant to be used for creating new roads. Note: top 
 
 This is the result of creating 3 new roads with weights 9,1 and 9. Note: the new roads do not go from the same node or to the same node twice just as specified in the question, "it cannot be that both roads leave G or enter H from the same node".
 
+If we index city G as A-E and city H as F-J, the new roads would connect:
+
+```
+    A -> F with length 9
+    B -> G with length 1
+    C -> H with length 9
+```
+
 My program also  accepts any sized cities G and H and any number of new roads.
 Sample output of program:
 
