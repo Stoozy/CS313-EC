@@ -44,7 +44,7 @@ Here's the code
             // for every letter 
             // check if it has any subtree
             // if it does, that means the letter leads to a word, 
-            // then add it to the prefix and call print recursively
+            // then add it to the prefix and call _ends_with recursively
             for(int i=0; i<26; ++i){
                 if(root->children[i] != nullptr){
                     std::string new_prefix = prefix + (char) (97 + i);
