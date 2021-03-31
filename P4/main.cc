@@ -7,12 +7,11 @@ using std::cin;
 
 int main(){
     tree words_tree = tree();
-    words_tree.insert("abcd");
-    words_tree.insert("test");
-    words_tree.insert("yamum");
-    words_tree.insert("testing");
-    words_tree.insert("another");
+    words_tree.insert("red");
+    words_tree.insert("green");
+    words_tree.insert("blue");
 
+    cout << "list: " <<  endl;
     words_tree.print();
 
     std::string search_term;

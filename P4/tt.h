@@ -67,24 +67,18 @@ class tree {
             return;
         }
 
-        bool _search(std::string prefix, std::string term, t_node * root){
-            // same as print but everytime we find a word,
-            // check if it's equal to the search term and return
-            // accordingly.
-            if(root->is_word){
-                if(prefix == term){
-                    return true;
-                }
+        bool _search(std::string term, t_node * root){
+            // iteratively check every char in the search term
+            for(int i=0; i<term.length(); ++i){
+                int n = term[i] - 'a';
+                if(!root->children[n])
+                    return false; // reached dead end
+                root = root->children[n];
             }
-
-            for(int i=0; i<26; ++i){
-                if(root->children[i] != nullptr){
-                    std::string new_prefix = prefix + (char) (97 + i);
-                    return _search(new_prefix, term, root->children[i]);
-                }
-            }
-
-            return false;
+            // if the word was found then 
+            // root would be a valid node 
+            // with is_word set to true
+            return (root != nullptr && root->is_word);
         }
 
     public:
@@ -98,7 +92,7 @@ class tree {
         } //wrapper print
 
         bool search(std::string word){
-            return _search("", word, this->root);
+            return _search(word, this->root);
         }
 
         void insert(std::string str){
