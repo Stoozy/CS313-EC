@@ -27,13 +27,22 @@ class tree {
         t_node * root;
 
         void _insert(std::string word, t_node * root){
+            // reached end of word, 
+            // mark root as word (base case)
             if(word[0] == '\0'){
                 root->is_word = true;
                 return;
             }
         
+            // i represents the index of
+            // the char from the word in 
+            // the alphabet
             int i = (int) word[0] - 'a';
             if(root->children[i] == nullptr) {
+                // children for the current 
+                // character doesn't exit, 
+                // create the children by 
+                // initializing t_node
                 t_node * np = new t_node();
                 root->children[i] = np;
 
