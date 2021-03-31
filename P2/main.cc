@@ -99,16 +99,22 @@ int main(){
 
     // adjacency matrix 
     // of two cities
+    // 2d arrays are basically 
+    // pointers to pointers
     int ** city_g = new int*[N];
     int ** city_h = new int*[N];
     int ** map = new int*[2*N];
 
     int i=0;
+    // dynamically allocate N items
+    // for each pointer of pointers
     for(; i<N; ++i){
         city_g[i] = new int[N];
         city_h[i] = new int[N];
     }
-    
+
+    // dynamically allocate N items
+    // for each pointer of pointers
     for(i=0; i<2*N; ++i){
         map[i] = new int[2*N];
     }
@@ -138,16 +144,13 @@ int main(){
     print_city(2*N, map);
 
 
+    // deleting everything 
     for(i=0; i<N; ++i){
         delete[] city_g[i];
         delete[] city_h[i];
     }
 
-
-    for(i=0; i<2*N; ++i){
-        delete[] map[i];
-    }
-
+    for(i=0; i<2*N; ++i) delete[] map[i];
 
     delete[] city_g;
     delete[] city_h;
