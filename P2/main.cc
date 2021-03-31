@@ -33,6 +33,7 @@ void gen_city(int N, int ** city){
 }
 
 void print_city(int N, int ** city){
+    // simply print the 2d array
     for(int i=0; i<N; ++i){
         for(int j=0; j<N; ++j){
             cout <<  city[i][j]  << " " ;
@@ -46,6 +47,9 @@ void gen_map(int N, int ** map, int ** city_a, int ** city_b){
     for(int r=0; r<2*N; ++r){
         for(int c=0; c<2*N; ++c){
             if(r<N && c<N) map[r][c] = city_a[r][c];
+            // copying city b by offsetting coords
+            // by N (row 7 would be row 2 of city b, 
+            // if N was 5)
             if(r>=N && c>=N) {
                 map[r][c] = city_b[r-N][c-N];
             }
@@ -56,16 +60,23 @@ void gen_map(int N, int ** map, int ** city_a, int ** city_b){
 void add_roads(int N, int n_roads, int **map){
     std::vector<int> nrc;
     int total_roads = 0 ;
+    
+    // iterating map matrix
     for(int r=0; r<2*N; ++r){
         for(int c=0; c<2*N; ++c){
             if(r>=N && c<N) {
                 map[r][c] = map[c][r];
             }
             if(r < N && c >= N) {
+                // make sure to create only n_roads
                 if(total_roads != n_roads ){
+                    // check if road has already been added
+                    // by checking if it's in the nrc vector
                     if(std::find(nrc.begin(), nrc.end(), r) == nrc.end() &&
                         std::find(nrc.begin(), nrc.end(), c) == nrc.end()){
-
+ 
+                        // generate random weight for road
+                        // and update nrc and total_roads accordingly
                         map[r][c] = (rand() % 9 ) +1;
                         nrc.push_back(r);
                         nrc.push_back(c);
