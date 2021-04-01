@@ -79,7 +79,7 @@ Since we are still in the call `longest_path(B(1), D(3), 8, 4, graph)` we have t
 Now we check Cs connection to D. cpl for the next call gets updated to 8+9 where 8 is the original cpl and 9 is the distance from C to D. Now, `longest_path(C(2), D(3), 17, graph)` get's called. Then it gets the total distnce to D now, 17+1 where 17 is the original cpl and 1 is Cs distance to D. which is 18 and since 18>17, max gets updated.
 
 
-This gets repeated until the maximum distance is found through intermediate nodes or a direct connection to the destination node.
+This gets repeated until the original loop finishes (thereby going through every single path in the graph from A->D) and at such a point, max should hold the maximum from A->D.
 
 
 
