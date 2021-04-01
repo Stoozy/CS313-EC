@@ -23,7 +23,7 @@ For example, A tree with the words `hi`,`eat`, and `and` may look like this
          |         |         |
       ..[n]..     [a]..   ..[i] -> is_word = true
          |         |        
-      ..[d]     ..[t] -> is_word = true
+      ..[d]..   ..[t] -> is_word = true [] ...
          | 
          |-> is_word = true
 
